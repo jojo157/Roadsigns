@@ -1,1 +1,1 @@
-web: gunicorn Roadsigns.wsgi
+web: gunicorn roadsigns.wsgi
