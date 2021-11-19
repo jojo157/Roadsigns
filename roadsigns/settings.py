@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,9 @@ SECRET_KEY = 'django-insecure-qdz)w)r7%3v*p*m^*t5zgpyb6vwu6uj8*+ss7g&f%&=2sz9*km
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "https://8000-chocolate-guineafowl-ispszckq.ws-eu18.gitpod.io"]
+ALLOWED_HOSTS = ["localhost", "https://roadsigns.herokuapp.com/"]
+
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
 
@@ -50,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'roadsigns.urls'
@@ -135,8 +141,15 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # storgae settings
-STATIC_URL = "/static/"
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -146,3 +159,5 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_EMAIL_REQUIRED = True
 SITE_ID=1
+
+django_heroku.settings(locals())

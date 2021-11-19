@@ -12,15 +12,15 @@ from .models import Roadsign
 import random2
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
-
 #def home(request):
 #    signs = Roadsign.objects.filter()
 #    context = {
  #       "signs": signs,
   #  }
   #  return render(request, "signs.html", context)
+
+def index(request):
+    return render(request, "landing.html")
 
 def home(request):
     count_signs = Roadsign.objects.filter().count()
@@ -30,3 +30,11 @@ def home(request):
         "signs": random,
     }
     return render(request, "signs.html", context)
+
+def insequence(request, id):
+    id = int(id) + 1
+    sign = Roadsign.objects.filter(pk=id)
+    context = {
+        "signs": sign,
+    }
+    return render(request, "signsOrdered.html", context)

@@ -6,19 +6,19 @@
 <div class="container text-center">
 
     {% for sign in signs %}
-    
-    <div class="roadsign-image-container mt-5 mb-2">
+    <p class="mt-3">Road sign #{{ sign.id }}</p>
+    <div class="roadsign-image-container mt-3 mb-2">
         <img class="img-fluid roadsign-image" src="{{ MEDIA_URL }}{{ sign.photo }}" alt="hero image">
     </div>
 
-    <div class="mt-5 mb-2">
+    <div class="mt-3 mb-2">
         <label>What does the sign mean?</label>
         <input id="sign-guess" type="text" name=sign-guess>
     </div>
     <div class="mt-3 mb-2">
         <div id ="answer" class="d-none"><p>{{ sign.sign_name }}</p></div>
         <button class="btn btn-sm btn-primary" id="reveal-button">Reveal answer</button>
-        <a class="btn btn-sm btn-primary" id="next-sign" href="{% url 'home' %}">Next</a>
+        <a class="btn btn-sm btn-primary" id="next-sign" href="{% url 'insequence' sign.id %}">Next</a>
     </div>
     
 
