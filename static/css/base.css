@@ -5,8 +5,6 @@
 
 body {
     min-height: 100vh;
-    
-
 }
 
 .nav-collapse-colour {
@@ -41,6 +39,14 @@ body {
 }
 
 .window-content {
-    min-height: 100vh;
-    margin-bottom: 100px;
+    min-height: fit-content;
 }
+
+.roadsign-image-container{
+    height: 200px;
+}
+
+.roadsign-image{
+    object-fit: cover;
+    height: 200px;
+}   
