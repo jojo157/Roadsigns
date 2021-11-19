@@ -161,3 +161,4 @@ ACCOUNT_EMAIL_REQUIRED = True
 SITE_ID=1
 
 django_heroku.settings(locals())
+
