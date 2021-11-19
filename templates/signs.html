@@ -16,12 +16,19 @@
         <input id="sign-guess" type="text" name=sign-guess>
     </div>
     <div class="mt-5 mb-2">
-        <div><p>{{ sign.sign_name }}</p></div>
-        <button>Reveal answer</button>
+        <div id ="answer" class="d-none"><p>{{ sign.sign_name }}</p></div>
+        <button class="btn btn-sm btn-primary" id="reveal-button">Reveal answer</button>
+        <a class="btn btn-sm btn-primary" id="next-sign" href="{% url 'home' %}">Next</a>
     </div>
+    
 
     {% endfor %}
 
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+    <script src="{% static 'js/roadsign.js' %}"></script>
 {% endblock %}
