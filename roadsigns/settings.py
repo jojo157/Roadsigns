@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-qdz)w)r7%3v*p*m^*t5zgpyb6vwu6uj8*+ss7g&f%&=2sz9*km
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["localhost", "https://8000-chocolate-guineafowl-ispszckq.ws-eu18.gitpod.io"]
 
 # Application definition
 
