@@ -90,17 +90,17 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
+#if "DATABASE_URL" in os.environ:
+DATABASES = {
+    "default": dj_database_url.parse("postgres://yzidrypzvbhmkl:aff0831e3b99ba0f248dfaa71660a3c92324d0914e01bf378e7763075ae0b7c4@ec2-54-78-211-131.eu-west-1.compute.amazonaws.com:5432/d120tpuoq67co0")
+}
+#else:
+#    DATABASES = {
+#        "default": {
+#            "ENGINE": "django.db.backends.sqlite3",
+#            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),    os.environ.get("DATABASE_URL")
+ #       }
+#    }
 
 
 # Password validation
